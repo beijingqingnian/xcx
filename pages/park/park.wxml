@@ -1,0 +1,292 @@
+<view class="page">
+<form bindsubmit="formSubmit" >
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>园区名称</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入园区名称" name="parkName" value="{{form.parkName}}" auto-focus placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>联系人</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入联系人" name="constact" value="{{form.constact}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>身份</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入身份" name="identity" value="{{form.identity}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>电话</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入电话" name="mobile" value="{{form.mobile}}" type="number" maxlength="11" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>地区</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请选择" name="provinces" value="{{province}}-{{city}}-{{county}}" focus="{{focus}}" bindfocus="open"  style=" color:#353535;"/>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{condition}}" class="citypicker">
+    <picker-view indicator-style="height: 50px;" style="width: 100%; height: 300px;" value="{{value}}" bindchange="bindChange" class="citybody">
+      <view class="cityheader">
+        <view bindtap="open" class="city-cancel">取消</view>
+        <view bindtap="open" class="city-true">确定</view>
+      </view>
+      <picker-view-column>
+        <view wx:for="{{provinces}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{citys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{countys}}" wx:key="item" style="line-height: 50px;padding-left:10px;">{{item}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>仓库地址</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入仓库地址" name="detailsAddress" value="{{form.detailsAddress}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>经纬度</text>
+      </view>
+      <view class="flex-item" wx:if="{{initPosition}}">
+        <input placeholder="请选择经纬度" name="longitudeLatitude" value="{{location.longitude}},{{location.latitude}}" placeholder-class="placeholder" />
+      </view>
+      <view class="flex-item" bindtap="chooseLocation">
+        <button type="primary" size="mini" style="float:right; margin-right:10px; margin-top:5px;">定位</button>
+      </view>
+    </view>
+  </view>
+
+  <!--<view>
+  <text>园区资质</text>
+</view>-->
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindQualification" name="qualification" value="{{qualificationId}}" range="{{qualification}}">
+          <text>常用资质</text>
+          <text style="float:right;">{{qualification[qualificationId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>其他资质</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入其他资质" name="qualificationOther" value="{{form.qualificationOther}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerChangeLevel" name="firePermitLevel" value="{{levelId}}" range="{{fireLevel}}">
+          <text>消防级别</text>
+          <text style="float:right;">{{fireLevel[levelId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerChangeType" name="firePermitType" value="{{typeId}}" range="{{fireType}}">
+          <text>消防类型</text>
+          <text style="float:right;">{{fireType[typeId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+    <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindParkType" name="parkType" value="{{parkTypeId}}" range="{{parkType}}">
+          <text>类型</text>
+          <text style="float:right;">{{parkType[parkTypeId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>园区占地面积(亩)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入占地面积" name="contractArea" value="{{form.contractArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>总建筑面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入总建筑面积" name="parkArea" value="{{form.parkArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>仓库总面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入仓库总面积" name="warehouseArea" value="{{form.warehouseArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>仓库剩余面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入仓库剩余面积" name="remainWarehouseArea" value="{{form.remainWarehouseArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>办公室面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入办公室面积" name="officeTotalArea" value="{{form.officeTotalArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>办公室剩余面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入办公室剩余面积" name="remainOfficeArea" value="{{form.remainOfficeArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>宿舍面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入宿舍面积" name="dormTotalArea" value="{{form.dormTotalArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>宿舍剩余面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入宿舍剩余面积" name="remainDormArea" value="{{form.remainDormArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>起租面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入起租面积" name="minLeaseArea" value="{{form.minLeaseArea}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>起租价格(元/m²/天)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入起租价格" name="minLeasePrice" value="{{form.minLeasePrice}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>起租期限(月)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="请输入起租期限" name="minLeasePeriod" value="{{form.minLeasePeriod}}" placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerChangeInvoice" name="invoice" value="{{invoiceId}}" range="{{invoice}}">
+          <text>发票</text>
+          <text style="float:right;">{{invoice[invoiceId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="images-wrapper">
+    <text class="images-text">图片上传</text>
+    <view class="images-list">
+      <block wx:for-items="{{imageList}}" wx:for-item="image" wx:key="*this">
+        <image src="{{image}}" name="image" class="images-image" data-src="{{image}}" bindtap="previewImage"></image>
+      </block>
+      <image src="/images/plus.png" class="images-image images-image-plus" bindtap="chooseImage"></image>
+    </view>
+  </view>
+  <view class="section section_top"  wx:if="{{actionUpdate}}">
+    <view class="flex-wrp" style="flex-direction:row;justify-content: space-around;position: relative;">
+      <text style="top:5px;left:10px;position: absolute;">子仓库({{warehouseNum}})</text>
+      <!--<view bindtap="addWarehouse" style="top:0px;right:10px;position: absolute;">-->
+      <view bindtap="addWarehouse" data-id="{{parkId}}" style="top:0px;right:10px;position: absolute;">
+        <image class="widget__arrow" src="../../images/arrow.png" background-size="cover"></image>
+      </view>
+    </view>
+  </view>
+  <view class="btn-area section_top" style="margin:10px;">
+    <button form-type="submit" type="primary" size="" plain="{{false}}" disabled="{{disabled}}" style="font-size:14px;">提交</button>
+  </view>
+  </form>
+</view>
+
+<!--<input type="digit" placeholder="带小数点的数字键盘"/>-->
+<!--<input type="idcard" placeholder="身份证输入键盘" />-->

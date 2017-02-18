@@ -1,0 +1,32 @@
+<import src="../../common/nav.wxml"/>
+<import src="../../common/list.wxml"/>
+<import src="../../common/form.wxml"/>
+
+<view class="nav">
+    <text>互联网仓储平台</text>
+    <view bindtap="modalTap">电话联络</view>
+</view>
+
+<view class="section">
+<view class="flex-wrp" style="flex-direction:row;justify-content:space-around;">
+
+                    <view class="flex-item">
+                        <view class="flex-content"><view>11</view></view>
+                        <view class="flex-content"><view>联系人</view></view>
+                    </view>
+
+                      <view class="flex-item">
+                        <view class="flex-content"><view>11</view></view>
+                        <view class="flex-content"><view>机会</view></view>
+                    </view>
+
+                      <view class="flex-item">
+                        <view class="flex-content"><view>11</view></view>
+                        <view class="flex-content"><view>合同</view></view>
+                    </view>
+            </view>
+</view>
+
+<template is="nav" data="{{ navList, activeIndex }}"/>
+<template is="list" data="{{goods,prompt,listHidden}}"/>
+<template is="form" data="{{goods,formHidden,clientId,clientArr}}"/>

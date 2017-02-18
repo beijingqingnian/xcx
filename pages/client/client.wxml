@@ -1,0 +1,31 @@
+
+
+<import src="../../common/template.wxml"/>
+
+<view class="search">
+    <view class="searchRank">
+        <view class="form">    
+            <input type="text" class="cl" value="{{value}}" bindfocus="onFouse" bindblur="onBlue"/>
+            <icon type="cancel" size="20" color="#fff" catchtap="deleteTxt"/>
+        </view>
+    </view>
+    <template is="searchTxt" data="{{ranking}}" />
+</view>
+
+
+    <scroll-view scroll-y="true" height="100%">
+      <block wx:for="{{customerList}}">
+        <navigator url="../clientDetail/clientDetail?id={{item.id}}">
+          <view class="board">
+              <view class="board-left">
+                <text class="title">{{item.customerName}}</text>
+                <text style="width:100%;">{{item.id}} 创建</text>
+              </view>
+              <view class="c_img">
+                <image class="board-img" src="../../images/arrowright.png" mode="aspectFill"/>
+              </view>
+          </view>
+        </navigator>
+      </block>
+    </scroll-view>
+

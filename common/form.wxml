@@ -1,0 +1,66 @@
+<template name="form">
+  <view  class="scroll-list" hidden="{{ formHidden.hidden }}">
+    <view class="weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+        <view class="detail_div">
+          <view class="con_view">客户名称</view>
+          <view class="con_view">
+            <input name="name" value="{{form.name}}" placeholder="请输入客户名称" auto-focus placeholder-class="placeholder" />
+          </view>
+        </view>
+        <view class="detail_div">
+          <view class="con_view">客户级别</view>
+          <view class="con_view">
+              <picker bindchange="changeClient" value="{{clientId}}" range="{{clientArr}}">
+                   {{clientArr[clientId]}}
+            </picker>
+          </view>
+        </view>
+        <view class="detail_div">
+          <view class="con_view">区域</view>
+          <view class="con_view">
+            <input name="name" value="{{form.name}}" placeholder="请输入客户" auto-focus placeholder-class="placeholder" />
+          </view>
+        </view>
+        <view class="detail_div">
+          <view class="con_view">地址</view>
+          <view class="con_view">
+            <input name="name" value="{{form.name}}" placeholder="请输入地址" auto-focus placeholder-class="placeholder" />
+          </view>
+        </view>
+        <view class="detail_div">
+          <view class="con_view">电话</view>
+          <view class="con_view">
+            <input name="name" type="number" value="{{form.name}}" placeholder="请输入电话" auto-focus placeholder-class="placeholder" />
+          </view>
+        </view>
+        <view class="detail_div">
+          <view class="con_view">手机</view>
+          <view class="con_view">
+            <input name="name" type="number"  placeholder="请输入手机" auto-focus placeholder-class="placeholder" />
+          </view>
+        </view>
+        <view class="detail_div">
+          <view class="con_view">行业</view>
+          <view class="con_view">
+242
+
+          </view>
+        </view>
+
+        <view class="detail_div">
+          <view class="con_view">客户来源</view>
+          <view class="con_view">
+            <input name="name" value="{{form.name}}" placeholder="请输入客户" auto-focus placeholder-class="placeholder" />
+          </view>
+        </view>
+      </view>
+    </view>
+      <view class="btn-area">
+<navigator url="url">
+<button type="primary">保存</button>
+</navigator>
+</view>
+  </view>
+
+</template>

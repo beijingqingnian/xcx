@@ -1,0 +1,55 @@
+{
+    "pages": [
+        "pages/index",
+        "pages/login/login",
+        "pages/park/park",
+        "pages/warehouse/warehouse",
+        "pages/warehouseList/warehouseList",
+        "pages/compact/compact",
+        "pages/client/client",
+        "pages/clientDetail/clientDetail",
+        "pages/search/search",
+        "pages/trump/trump"
+    ],
+    "window": {
+        "navigationBarBackgroundColor":"#3e4259",
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "园区",
+        "backgroundColor": "#fff",
+        "backgroundTextStyle": "#dark"
+    },
+    "tabBar": {
+        "color": "#74777e",
+        "selectedColor": "#f06000",
+        "borderStyle": "white",
+        "backgroundColor": "#fff",
+    "list": [{
+        "pagePath": "pages/index",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-actived.png",
+        "text": "仓海"
+    }, {
+        "pagePath": "pages/login/login",
+        "iconPath": "images/note.png",
+        "selectedIconPath": "images/note-actived.png",
+        "text": "合同"
+    },{
+        "pagePath": "pages/client/client",
+        "iconPath": "images/profile.png",
+        "selectedIconPath": "images/profile-actived.png",
+        "text": "客户"
+    },{
+        "pagePath": "pages/trump/trump",
+        "iconPath": "images/safari.png",
+        "selectedIconPath": "images/safari-actived.png",
+        "text": "我的"
+    }]
+    },
+    "networkTimeout": {
+        "request": 10000,
+        "connectSocket": 10000,
+        "uploadFile": 10000,
+        "downloadFile": 10000
+    },
+    "debug": true
+}

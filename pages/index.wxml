@@ -1,0 +1,31 @@
+<import src="../common/template.wxml"/>
+
+<view class="nav">
+    <text class="nav_text">互联网仓储平台</text>
+    <navigator url="park/park" class="nav_type">
+        <view class="pic">
+            <image class="add_img" src="../../images/add.png"></image>
+        </view>
+    </navigator>
+</view>
+
+    <template is="loadings" data="{{loading,loadtxt}}" />
+
+    <view class="body">
+    <scroll-view scroll-y="true" height="100%">
+      <block wx:for="{{wareHouseList}}" wx:key="*this">
+        <!--<navigator url="../list/list?type={{item.id}}&title={{item.name}}">-->
+        <navigator url="park/park?parkId={{item.id}}">
+          <view class="board">
+            <view class="board-info">
+              <text class="board-name">{{item.name}}</text>
+              <image class="board-img" src="/images/arrowright.png" mode="aspectFill"/>
+            </view>
+            <view class="board-tip-info">
+              <text class="board-tip">共{{item.parkArea}}m²   结盟</text>
+            </view>
+          </view>
+        </navigator>
+      </block>
+    </scroll-view>
+  </view>

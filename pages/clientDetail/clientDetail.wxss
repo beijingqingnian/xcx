@@ -1,0 +1,102 @@
+.scroll-list {
+  overflow: hidden;
+}
+
+.weui-icon-search, .weui-search-bar__text {
+  vertical-align: inherit;
+}
+
+.topbar {
+  background: #fff;
+}
+
+.topbar-item {
+  color: #333;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.topbar-item.active {
+  color: #479de6;
+}
+
+.swiper_box {
+  width: 100%;
+}
+
+swiper-item image {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.flex-wrp {
+  height: 70px;
+  display: flex;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+.flex-item {
+  height: 70px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-content {
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav {
+  height: 150px;
+  background-color: #44465b;
+  width: 100%;
+}
+
+.nav text {
+  display: block;
+  height: 80px;
+  width: 100%;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  line-height: 80px;
+}
+
+.nav view {
+  width: 125px;
+  height: 33px;
+  color: #fff;
+  text-align: center;
+  line-height: 33px;
+  background: url('../../images/tel.png') no-repeat 20px center rgb(104, 107, 126);
+  background-size: 19px 19px;
+  margin: 0 auto;
+  border-radius: 17px;
+  padding-left: 17px;
+}
+
+.btn-area {
+  margin: 25px;
+}
+
+.detail_div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.con_view {
+  line-height: 35px;
+  height: 35px;
+  padding: 6px;
+  width:120px;
+}
+
+.con_view input {
+  line-height: 35px;
+  height: 35px;
+}

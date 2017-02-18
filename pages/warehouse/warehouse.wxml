@@ -1,0 +1,141 @@
+<import src="../common/template.wxml" />
+<view class="page">
+  <template is="loadings" data="{{loading,loadtxt}}" />
+  <form bindsubmit="formSubmit" >
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>子仓库名称</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="子仓库名称" name="warehouseName" auto-focus placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="面积" name="houseArea" auto-focus placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>剩余面积(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="剩余面积" name="houseRemainArea" auto-focus placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>起租价格(元/m²/天)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="起租价格" name="warehouseMinLeasePrice" auto-focus placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>承重(吨/m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="承重" name="warehouseLoadBearing" auto-focus placeholder-class="placeholder" />
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <text>库高(m²)</text>
+      </view>
+      <view class="flex-item">
+        <input placeholder="库高" name="warehouseSizeHigh" auto-focus placeholder-class="placeholder" />
+        <input name="parkId" value="{{parkId}}" hidden/>
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerChangeBuild" name="warehouseBuildingStruct" value="{{buildId}}" range="{{build}}">
+          <text>建筑结构</text>
+          <text style="float:right;">{{build[buildId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerBuildType" name="warehouseMode" value="{{buildTypeId}}" range="{{buildType}}">
+          <text>库型</text>
+          <text style="float:right;">{{buildType[buildTypeId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerType" name="warehouseType" value="{{typeId}}" range="{{type}}">
+          <text>类型</text>
+          <text style="float:right;">{{type[typeId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerTerrace" name="warehouseTerrace" value="{{terraceId}}" range="{{terrace}}">
+          <text>地坪</text>
+          <text style="float:right;">{{terrace[terraceId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="section">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerFloor" name="warehouseFloor" value="{{floorId}}" range="{{floor}}">
+          <text>楼层</text>
+          <text style="float:right;">{{floor[floorId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view style="background-color: #FFFFFF;">
+      <view style="margin:5px 15px 0px 15px;line-height:38px;font-weight:bold;">存放物品</view>
+      <checkbox-group name="warehouseStorageGoods">
+        <block wx:for="{{goods}}">
+          <label style="margin:0px 15px 0px 15px;display:block;line-height:38px;">
+            <checkbox value="{{item}}" />{{item}}</label>
+        </block>
+      </checkbox-group>
+    </view>
+  </view>
+  <view class="section section_top">
+    <view class="flex-wrp" style="flex-direction:row;">
+      <view class="flex-item">
+        <picker bindchange="bindPickerCutOff" name="warehouseIsDivisible" value="{{cutOffId}}" range="{{cutOff}}">
+          <text>可否分割</text>
+          <text style="float:right;line-height:30px;">{{cutOff[cutOffId]}}</text>
+        </picker>
+      </view>
+    </view>
+  </view>
+  <view class="btn-area section_top" style="margin:10px;">
+    <button formType="submit" type="primary" size="" plain="{{false}}" disabled="{{disabled}}" style="font-size:14px;">提交</button>
+  </view>
+  </form>
+</view>

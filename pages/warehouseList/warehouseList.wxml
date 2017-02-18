@@ -1,0 +1,19 @@
+<block wx:for="{{warehouseList}}" wx:key="*this">
+        <!--<navigator url="../list/list?type={{item.id}}&title={{item.name}}">-->
+        <navigator url="../warehouse/warehouse?warehouseId={{item.id}}">
+          <view class="board">
+            <view class="board-info">
+              <text class="board-name">{{item.name}}</text>
+              <image class="board-img" src="/images/arrowright.png" mode="aspectFill"/>
+            </view>
+            <view class="board-tip-info">
+              <text class="board-tip">共{{item.area}}m²</text>
+            </view>
+          </view>
+        </navigator>
+      </block>
+  <view class="btn-area section_top" style="margin:10px;">
+  <navigator url="../warehouse/warehouse?parkId={{parkId}}">
+    <button type="primary" size="" bindtap="addWarehouse" plain="{{false}}" disabled="{{disabled}}" style="font-size:14px;">添加子仓库</button>
+    </navigator>
+  </view>

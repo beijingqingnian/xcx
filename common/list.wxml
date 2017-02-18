@@ -1,0 +1,25 @@
+<import src="prompt.wxml" />
+<template name="list">
+  <template is="prompt" data="{{ prompt }}" />
+  <view class="scroll-list" hidden="{{ listHidden}}">
+    <view class="weui-panel weui-panel_access" wx:if="{{ !!goods.paginate.total }}">
+      <view class="weui-panel__bd">
+        <navigator url="" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" wx:for="{{ goods.items }}" wx:key="" bindtap="navigateTo" data-id="{{ item._id }}">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{ item.thumb_url }}" />
+            <!--<image class="weui-media-box__thumb" src="../images/kehu_icon_6.png" />-->
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">{{ item.name }}</view>
+            <view>易代储长处深刻的积分多舒服就开始了水电费威威如今为了软件分类为房间了第三方两件事水电费老师放假</view>
+          </view>
+        </navigator>
+      </view>
+    </view>
+    <view class="btn-area">
+      <navigator url="url">
+        <button type="primary">发布记录</button>
+      </navigator>
+    </view>
+  </view>
+</template>
